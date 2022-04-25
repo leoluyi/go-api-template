@@ -32,9 +32,9 @@ make run
 
 ### Make it Your Own
 
-Clone this repo with 
+Clone this repo with
 ```shell script
-git clone https://github.com/jonnylangefeld/go-api.git
+git clone https://example/go-api.git
 ```
 And rename the module with
 ```shell script

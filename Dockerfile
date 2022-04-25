@@ -1,7 +1,7 @@
 FROM golang:1.14 as gobuild
 ARG VERSION=latest
 
-WORKDIR /go/src/github.com/jonnylangefeld/go-api
+WORKDIR /go/src/example/go-api
 ADD go.mod go.sum main.go ./
 ADD vendor ./vendor
 ADD pkg ./pkg
@@ -11,6 +11,6 @@ RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -mod=vendor -o go-api -ldfl
 
 FROM gcr.io/distroless/base
 
-COPY --from=gobuild /go/src/github.com/jonnylangefeld/go-api/go-api /bin
+COPY --from=gobuild /go/src/example/go-api/go-api /bin
 
 ENTRYPOINT ["/bin/go-api"]

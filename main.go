@@ -9,9 +9,9 @@ import (
 	"github.com/spf13/pflag"
 	"go.uber.org/zap"
 
-	"github.com/jonnylangefeld/go-api/docs"
-	"github.com/jonnylangefeld/go-api/pkg/api"
-	"github.com/jonnylangefeld/go-api/pkg/db"
+	"example/go-api/docs"
+	"example/go-api/pkg/api"
+	"example/go-api/pkg/db"
 )
 
 var (

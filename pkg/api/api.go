@@ -3,14 +3,15 @@ package api
 import (
 	"net/http"
 
-	"github.com/jonnylangefeld/go-api/pkg/db"
+	"example/go-api/pkg/db"
+
 	"go.uber.org/zap"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	httpSwagger "github.com/swaggo/http-swagger"
 
-	m "github.com/jonnylangefeld/go-api/pkg/middelware"
+	m "example/go-api/pkg/middelware"
 )
 
 var DBClient db.ClientInterface

@@ -8,8 +8,8 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
 
-	"github.com/jonnylangefeld/go-api/pkg/db"
-	"github.com/jonnylangefeld/go-api/pkg/types"
+	"example/go-api/pkg/db"
+	"example/go-api/pkg/types"
 )
 
 type (

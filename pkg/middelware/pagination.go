@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-chi/render"
 
-	"github.com/jonnylangefeld/go-api/pkg/types"
+	"example/go-api/pkg/types"
 )
 
 const (
