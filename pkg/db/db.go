@@ -4,8 +4,7 @@ package db
 
 import (
 	"github.com/jinzhu/gorm"
-	// postgres blank import for gorm
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres" // postgres blank import for gorm
 
 	"example/go-api/pkg/types"
 )

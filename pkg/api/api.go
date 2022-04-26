@@ -3,14 +3,12 @@ package api
 import (
 	"net/http"
 
-	"example/go-api/pkg/db"
-
-	"go.uber.org/zap"
-
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	httpSwagger "github.com/swaggo/http-swagger"
+	"go.uber.org/zap"
 
+	"example/go-api/pkg/db"
 	m "example/go-api/pkg/middelware"
 )
 
