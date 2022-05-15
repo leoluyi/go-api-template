@@ -8,8 +8,8 @@ import (
 	httpSwagger "github.com/swaggo/http-swagger"
 	"go.uber.org/zap"
 
-	"example/go-api/pkg/db"
-	m "example/go-api/pkg/middelware"
+	"example/go-api/internal/db"
+	m "example/go-api/internal/middelware"
 )
 
 var DBClient db.ClientInterface

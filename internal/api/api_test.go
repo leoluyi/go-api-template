@@ -9,8 +9,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"example/go-api/pkg/api/mocks"
-	"example/go-api/pkg/types"
+	"example/go-api/internal/api/mocks"
+	"example/go-api/internal/types"
 
 	"github.com/go-chi/chi"
 	"github.com/golang/mock/gomock"
@@ -70,7 +70,7 @@ func TestGetRouter(t *testing.T) {
 	}
 }
 
-//go:generate $GOPATH/bin/mockgen -destination=./mocks/db.go -package=mocks example/go-api/pkg/db ClientInterface
+//go:generate $GOPATH/bin/mockgen -destination=./mocks/db.go -package=mocks example/go-api/internal/db ClientInterface
 
 func getDBClientMock(t *testing.T) *mocks.MockClientInterface {
 	ctrl := gomock.NewController(t)

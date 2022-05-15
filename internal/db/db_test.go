@@ -9,7 +9,7 @@ import (
 	"github.com/ory/dockertest/v3"
 	"github.com/stretchr/testify/assert"
 
-	"example/go-api/pkg/types"
+	"example/go-api/internal/types"
 )
 
 var (

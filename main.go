@@ -10,8 +10,8 @@ import (
 	"go.uber.org/zap"
 
 	"example/go-api/docs"
-	"example/go-api/pkg/api"
-	"example/go-api/pkg/db"
+	"example/go-api/internal/api"
+	"example/go-api/internal/db"
 )
 
 var (

@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres" // postgres blank import for gorm
 
-	"example/go-api/pkg/types"
+	"example/go-api/internal/types"
 )
 
 const (
