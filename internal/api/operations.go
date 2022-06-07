@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-chi/render"
 
+	"example/go-api/internal/errors"
 	m "example/go-api/internal/middelware"
 	"example/go-api/internal/types"
 )
@@ -17,13 +18,13 @@ import (
 // @Param id path string true "article id"
 // @Router /articles/{id} [get]
 // @Success 200 {object} types.Article
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func GetArticle(w http.ResponseWriter, r *http.Request) {
 	article := r.Context().Value(m.ArticleCtxKey).(*types.Article)
 
 	if err := render.Render(w, r, article); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }
@@ -36,22 +37,22 @@ func GetArticle(w http.ResponseWriter, r *http.Request) {
 // @Produce json
 // @Router /articles [put]
 // @Success 200 {object} types.Article
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func PutArticle(w http.ResponseWriter, r *http.Request) {
 	article := &types.Article{}
 	if err := render.Bind(r, article); err != nil {
-		_ = render.Render(w, r, types.ErrInvalidRequest(err))
+		_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 		return
 	}
 
 	if err := DBClient.SetArticle(article); err != nil {
-		_ = render.Render(w, r, types.ErrInvalidRequest(err))
+		_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 		return
 	}
 
 	if err := render.Render(w, r, article); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }
@@ -64,12 +65,12 @@ func PutArticle(w http.ResponseWriter, r *http.Request) {
 // @Param page_id query string false "id of the page to be retrieved"
 // @Router /articles [get]
 // @Success 200 {object} types.ArticleList
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func ListArticles(w http.ResponseWriter, r *http.Request) {
 	pageID := r.Context().Value(m.PageIDKey)
 	if err := render.Render(w, r, DBClient.GetArticles(pageID.(int))); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }
@@ -82,13 +83,13 @@ func ListArticles(w http.ResponseWriter, r *http.Request) {
 // @Param id path string true "order id"
 // @Router /orders/{id} [get]
 // @Success 200 {object} types.Order
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func GetOrder(w http.ResponseWriter, r *http.Request) {
 	order := r.Context().Value(m.OrderCtxKey).(*types.Order)
 
 	if err := render.Render(w, r, order); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }
@@ -101,22 +102,22 @@ func GetOrder(w http.ResponseWriter, r *http.Request) {
 // @Produce json
 // @Router /orders [put]
 // @Success 200 {object} types.Order
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func PutOrder(w http.ResponseWriter, r *http.Request) {
 	order := &types.Order{}
 	if err := render.Bind(r, order); err != nil {
-		_ = render.Render(w, r, types.ErrInvalidRequest(err))
+		_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 		return
 	}
 
 	if err := DBClient.SetOrder(order); err != nil {
-		_ = render.Render(w, r, types.ErrInvalidRequest(err))
+		_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 		return
 	}
 
 	if err := render.Render(w, r, order); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }
@@ -129,12 +130,12 @@ func PutOrder(w http.ResponseWriter, r *http.Request) {
 // @Param page_id query string false "id of the page to be retrieved"
 // @Router /orders [get]
 // @Success 200 {object} types.OrderList
-// @Failure 400 {object} types.ErrResponse
-// @Failure 404 {object} types.ErrResponse
+// @Failure 400 {object} errors.ErrResponse
+// @Failure 404 {object} errors.ErrResponse
 func ListOrders(w http.ResponseWriter, r *http.Request) {
 	pageID := r.Context().Value(m.PageIDKey)
 	if err := render.Render(w, r, DBClient.GetOrders(pageID.(int))); err != nil {
-		_ = render.Render(w, r, types.ErrRender(err))
+		_ = render.Render(w, r, errors.ErrRender(err))
 		return
 	}
 }

@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-chi/render"
 
-	"example/go-api/internal/types"
+	"example/go-api/internal/errors"
 )
 
 const (
@@ -25,7 +25,7 @@ func Pagination(next http.Handler) http.Handler {
 		if PageID != "" {
 			intPageID, err = strconv.Atoi(PageID)
 			if err != nil {
-				_ = render.Render(w, r, types.ErrInvalidRequest(fmt.Errorf("couldn't read %s: %w", PageIDKey, err)))
+				_ = render.Render(w, r, errors.ErrInvalidRequest(fmt.Errorf("couldn't read %s: %w", PageIDKey, err)))
 				return
 			}
 		}

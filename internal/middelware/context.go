@@ -9,6 +9,7 @@ import (
 	"github.com/go-chi/render"
 
 	"example/go-api/internal/db"
+	"example/go-api/internal/errors"
 	"example/go-api/internal/types"
 )
 
@@ -40,16 +41,16 @@ func Article(next http.Handler) http.Handler {
 		if id := chi.URLParam(r, "id"); id != "" {
 			intID, err := strconv.Atoi(id)
 			if err != nil {
-				_ = render.Render(w, r, types.ErrInvalidRequest(err))
+				_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 				return
 			}
 			article = DBClient.GetArticleByID(intID)
 		} else {
-			_ = render.Render(w, r, types.ErrNotFound())
+			_ = render.Render(w, r, errors.ErrNotFound())
 			return
 		}
 		if article == nil {
-			_ = render.Render(w, r, types.ErrNotFound())
+			_ = render.Render(w, r, errors.ErrNotFound())
 			return
 		}
 
@@ -68,16 +69,16 @@ func Order(next http.Handler) http.Handler {
 		if id := chi.URLParam(r, "id"); id != "" {
 			intID, err := strconv.Atoi(id)
 			if err != nil {
-				_ = render.Render(w, r, types.ErrInvalidRequest(err))
+				_ = render.Render(w, r, errors.ErrInvalidRequest(err))
 				return
 			}
 			order = DBClient.GetOrderByID(intID)
 		} else {
-			_ = render.Render(w, r, types.ErrNotFound())
+			_ = render.Render(w, r, errors.ErrNotFound())
 			return
 		}
 		if order == nil {
-			_ = render.Render(w, r, types.ErrNotFound())
+			_ = render.Render(w, r, errors.ErrNotFound())
 			return
 		}
 
