@@ -3,15 +3,12 @@ definitions:
   Article:
     properties:
       id:
-        description: The unique id of this item
         example: 1
         type: integer
       name:
-        description: The name of this item
         example: Skittles
         type: string
       price:
-        description: The price of this item
         example: 1.99
         type: number
     type: object
@@ -30,26 +27,21 @@ definitions:
   ErrorResponse:
     properties:
       code:
-        description: application-specific error code
         example: 404
         type: integer
       error:
-        description: application-level error message, for debugging
         example: The requested resource was not found on the server
         type: string
       status:
-        description: user-level status message
         example: Resource not found.
         type: string
     type: object
   Order:
     properties:
       id:
-        description: The unique id of this order
         example: 1
         type: integer
       lastUpdated:
-        description: DateTime is the date and time of this order
         example: 0001-01-01 00:00:00+00
         type: string
     type: object
@@ -73,7 +65,6 @@ info:
   description: |-
     This API is a sample go-api.
     It also does this.
-  license: {}
   title: My API
 paths:
   /articles:
