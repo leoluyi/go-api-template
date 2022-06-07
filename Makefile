@@ -8,14 +8,14 @@ version:
 	@echo $(VERSION)
 
 generate-docs:
-	@go run ./vendor/github.com/swaggo/swag/cmd/swag/main.go init -g pkg/api/api.go
+	@go run ./vendor/github.com/swaggo/swag/cmd/swag/main.go init -g internal/api/api.go
 
 run:
 	@docker start go-api-database &> /dev/null || docker run -d \
 	 --name go-api-database \
 	 -e POSTGRES_PASSWORD=secret \
-	 -p 5432:5432 postgres &> /dev/null
-	@DB_CONNECTION='postgresql://postgres:secret@localhost:5432/postgres?sslmode=disable' \
+	 -p 5433:5432 postgres &> /dev/null
+	@DB_CONNECTION='postgresql://postgres:secret@localhost:5433/postgres?sslmode=disable' \
 	go run -ldflags "-X main.version=$(VERSION)" main.go
 
 oracle:
