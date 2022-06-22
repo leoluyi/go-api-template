@@ -1,4 +1,4 @@
-BINARY_NAME=gp-app
+BINARY_NAME=go-app
 VERSION ?= $(shell git describe --match 'v[0-9]*' --tags --always)
 
 build:
