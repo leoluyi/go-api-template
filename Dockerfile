@@ -4,7 +4,7 @@ ARG VERSION=latest
 WORKDIR /go/src/example/go-api
 ADD go.mod go.sum main.go ./
 ADD vendor ./vendor
-ADD pkg ./pkg
+ADD internal ./internal
 ADD docs ./docs
 
 RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -mod=vendor -o go-api -ldflags "-X main.version=$VERSION" main.go
